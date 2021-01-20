@@ -3,4 +3,14 @@
     <string name="slogan">¡Tómalo EZ!</string>
     <string name="save">Guardar</string>
     <string name="download">Descargar</string>
+    <string name="today_limit">"Límite de hoy: "</string>
+    <string name="your_expense">"Tu gasto: "</string>
+    <string name="remaining_money">"Dinero que todavia te queda: "</string>
+    <string name="today_expenses">"Gastos de hoy: "</string>
+    <string name="edit_expenses">Editar gastos</string>
+    <string name="settings">Ajustes</string>
+    <string name="edit_income">Editar ingresos</string>
+    <string name="last_month_expenses">Gastos del mes pasado</string>
+    <string name="income">Ingresos</string>
+    <string name="fix_costs">Gastos obligatorios (seguro médico, etc...)</string>
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:checkable="false"
+        android:checked="false"
+        android:enabled="false"
+        android:title="@string/settings" />
+    <item
+        android:id="@+id/mItemEditIncome"
+        android:title="@string/edit_income" />
+    <item
+        android:id="@+id/mItemLastMonthExpenses"
+        android:title="@string/last_month_expenses" />
+</menu>

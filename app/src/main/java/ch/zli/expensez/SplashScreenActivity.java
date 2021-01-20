@@ -14,8 +14,6 @@ import android.widget.TextView;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN = 5000;
-
     Animation logoAnimation, sloganAnimation;
     ImageView logo;
     TextView slogan;
@@ -32,22 +30,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         logo = findViewById(R.id.imgLogo);
         slogan = findViewById(R.id.txtSlogan);
 
-
         logo.setAnimation(logoAnimation);
         slogan.setAnimation(sloganAnimation);
-
-
 
          new Handler().postDelayed(() -> {
              Intent mainIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
              startActivity(mainIntent);
              finish();
          }, 5000);
-
-
-
-
-
     }
 
 

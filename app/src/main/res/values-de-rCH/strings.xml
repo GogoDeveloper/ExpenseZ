@@ -3,4 +3,14 @@
     <string name="slogan">Nimm es EZ!</string>
     <string name="save">Speichern</string>
     <string name="download">Herunterladen</string>
+    <string name="today_limit">"Limite von heute: "</string>
+    <string name="your_expense">"Deine Ausgabe: "</string>
+    <string name="remaining_money">"Übriges Geld: "</string>
+    <string name="today_expenses">"Heutige Ausgaben: "</string>
+    <string name="edit_expenses">Ausgaben bearbeiten</string>
+    <string name="settings">Einstellungen</string>
+    <string name="edit_income">Einnahmen bearbeiten</string>
+    <string name="last_month_expenses">Ausgaben des letzten Monats</string>
+    <string name="income">Einnahmen</string>
+    <string name="fix_costs">Fixe Kosten (Krankenkasse, etc...)</string>
 </resources>

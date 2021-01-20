@@ -8,6 +8,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#D50000"
@@ -30,8 +31,148 @@
             android:layout_weight="1"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/cog_button" />
+            app:srcCompat="@drawable/cog_button" >
+
+        </ImageButton>
+
+
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="50dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtTLLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today_limit"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtTLNr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtTLCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/currency"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etxtYourExpense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/your_expense"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnSaveMain"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/save"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:gravity="center_horizontal"
+            android:text="@string/today_expenses"
+            android:textSize="20sp" />
+
+        <ListView
+            android:id="@+id/lvTodaysExpenses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_border"
+            android:divider="@color/black"
+            android:dividerHeight="1dp">
+
+        </ListView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtRMLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/remaining_money"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtRMNr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtRMCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/currency"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnEditExpenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="427dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="#FFFFFF"
+        android:clickable="true"
+        android:foregroundTint="#FFFFFF"
+        android:tint="#FFFFFF"
+        app:backgroundTint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:rippleColor="#030303"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
