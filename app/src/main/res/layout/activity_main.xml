@@ -31,11 +31,9 @@
             android:layout_weight="1"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/cog_button" >
+            app:srcCompat="@drawable/cog_button">
 
         </ImageButton>
-
-
 
 
     </LinearLayout>
@@ -119,11 +117,13 @@
         <ListView
             android:id="@+id/lvTodaysExpenses"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/rectangle_border"
             android:divider="@color/black"
-            android:dividerHeight="1dp">
+            android:dividerHeight="1dp"
+            android:fadeScrollbars="false"
+            android:isScrollContainer="true">
 
         </ListView>
 

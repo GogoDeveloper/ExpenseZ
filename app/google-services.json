@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "840412195462",
+    "firebase_url": "https://expensez-65f81-default-rtdb.firebaseio.com",
+    "project_id": "expensez-65f81",
+    "storage_bucket": "expensez-65f81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840412195462:android:58cd09442870522efbff07",
+        "android_client_info": {
+          "package_name": "ch.zli.expensez"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840412195462-dgpufn0aktmo7s95aurnmi4o4hg95i2d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoFShPZceA_MqQu68IbZrSlRXT2sppQ0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840412195462-dgpufn0aktmo7s95aurnmi4o4hg95i2d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
