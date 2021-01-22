@@ -26,7 +26,6 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
     float todaysLimit, remainingMoney, totalexpense;
 
-    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyy");
+    DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    DateTimeFormatter monthFormat = DateTimeFormatter.ofPattern("MM-yyyy");
+    DateTimeFormatter yearFormat = DateTimeFormatter.ofPattern("yyyy");
 
     Button btnSave;
     ListView listViewTDExpenses;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSaveMain);
         listViewTDExpenses = findViewById(R.id.lvTodaysExpenses);
         yourExpense = findViewById(R.id.etxtYourExpense);
-        DatabaseReference listRef = database.getReference().child(dateTimeFormatter.format(LocalDateTime.now()));
+        DatabaseReference listRef = database.getReference().child(yearFormat.format(LocalDateTime.now())).child(monthFormat.format(LocalDateTime.now())).child(dayFormat.format(LocalDateTime.now()));
 
         btnSave.setOnClickListener(v -> {
 
@@ -110,7 +111,8 @@ public class MainActivity extends AppCompatActivity {
         listRef.child("List").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                  Iterable<DataSnapshot> mii =  snapshot.getChildren();
+                  long mii =  snapshot.getChildrenCount();
+                  listRef.child("List").child("ListLength").setValue(mii-1);
 
                 /*for (:mii) {
 
