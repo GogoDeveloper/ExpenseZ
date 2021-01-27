@@ -26,10 +26,14 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainActivity extends AppCompatActivity {
 
     private static DecimalFormat df = new DecimalFormat("0.05");
+
+    private static long expenseIndex = 0;
 
     float todaysLimit, remainingMoney, totalexpense;
 
@@ -68,18 +72,41 @@ public class MainActivity extends AppCompatActivity {
         yourExpense = findViewById(R.id.etxtYourExpense);
         DatabaseReference listRef = database.getReference().child(yearFormat.format(LocalDateTime.now())).child(monthFormat.format(LocalDateTime.now())).child(dayFormat.format(LocalDateTime.now()));
 
+
+        //listRef.child("List").addListenerForSingleValueEvent();
+
+        if (listExpenses.size() == 0){
+            listRef.child("List").get().addOnSuccessListener(dataSnapshot -> {
+                for (DataSnapshot item : dataSnapshot.getChildren()) {
+
+                    if (!item.getKey().equals("ListLength")){
+                        listExpenses.add(Float.valueOf(Objects.requireNonNull(item.getValue(String.class))));
+                    }
+
+
+
+                }
+
+            });
+        }
+
+
+
+        /*for (Object item: listRef.child("List")) {
+
+        }*/
+
+        ArrayAdapter<Float> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listExpenses);
+        listViewTDExpenses.setAdapter(arrayAdapter);
+
         btnSave.setOnClickListener(v -> {
+            expenseIndex++;
+
+            listRef.child("List").child("expense" + expenseIndex).setValue(df.format(Float.parseFloat(String.valueOf(yourExpense.getText()))));
+            listExpenses.add(Float.valueOf(df.format(Float.parseFloat(String.valueOf(yourExpense.getText())))));
+            //listExpenses.add(listRef.child("List").child("expense"+expenseIndex));
 
 
-            listExpenses.add(Float.parseFloat(String.valueOf(yourExpense.getText())));
-            ArrayAdapter<Float> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listExpenses);
-            listViewTDExpenses.setAdapter(arrayAdapter);
-
-            int i = 0;
-            for (Float item : listExpenses) {
-                i++;
-                listRef.child("List").child("expense" + i).setValue(df.format(item));
-            }
         });
 
 
@@ -111,63 +138,30 @@ public class MainActivity extends AppCompatActivity {
         listRef.child("List").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                  long mii =  snapshot.getChildrenCount();
-                  listRef.child("List").child("ListLength").setValue(mii-1);
-
-                /*for (:mii) {
-
-                }*/
-
-                    remainingMoney = todaysLimit - totalexpense;
-
-                    TextView txtRM = findViewById(R.id.txtRMNr);
-                    txtRM.setText(df.format(totalexpense));
-                }
+                long listChildren = snapshot.getChildrenCount();
+                expenseIndex = listChildren - 1;
+                listRef.child("List").child("ListLength").setValue(listChildren - 1);
 
 
+                //listExpenses.add(Float.valueOf(snapshot.child("expense" + expenseIndex).getValue(String.class)));
 
+                remainingMoney = todaysLimit - totalexpense;
 
+                TextView txtRM = findViewById(R.id.txtRMNr);
+                txtRM.setText(df.format(totalexpense));
+            }
 
-            
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
             }
+
+
         });
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //Methods below are for the app to be in fullscreen mode, copied from android docs
@@ -191,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
-    private void showSystemUi(){
+    private void showSystemUi() {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
